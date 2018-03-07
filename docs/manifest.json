@@ -1,15 +1,15 @@
 {
-  "short_name": "NEWS",
-  "name": "NEWS",
+  "short_name": "PSP",
+  "name": "People Sabotaging Professionalism",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "114x114 64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#BA0C2F",
+  "background_color": "#BA0C2F"
 }
