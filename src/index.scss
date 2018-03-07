@@ -70,21 +70,6 @@ a {
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: center;
-    &:after {
-    	content: "";
-    	position: fixed;
-    	pointer-events: none;
-    	top:0;
-    	left:0;
-    	width:100%;
-    	height:100%;
-    	background-image: linear-gradient(180deg, 
-    		$pantone 0%,
-    		transparent 15%, 
-    		transparent 70%, 
-    		$pantone 90%
-    	);
-    }
 }
 
 ::-moz-selection {
@@ -102,7 +87,25 @@ a {
 	font-weight: 500;
     padding: 20vh 0.5em 40vh;
     margin: 0;
-    max-width: 600px;
+
+    &, &:after {
+        max-width: 600px;
+    }
+    &:after {
+        content: "";
+        position: fixed;
+        pointer-events: none;
+        top:0;
+        bottom:0;
+        left:0.5em;
+        right:0.5em;
+        background-image: linear-gradient(180deg, 
+            $pantone 0%,
+            transparent 15%, 
+            transparent 70%, 
+            $pantone 90%
+        );
+    }
 }
 
 #buttons {

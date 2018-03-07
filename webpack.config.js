@@ -10,9 +10,8 @@ const sourceMap = is_prod ? '' : '?sourceMap';
 module.exports = {
     entry: './src/index.js',
     output: {
-        filename: 'js/main.js',
-        path: path.resolve(__dirname, 'docs'),
-        publicPath: './'
+        filename: './js/main.js',
+        path: path.resolve(__dirname, 'docs')
     },
     devServer: is_prod ? {} : {
     	contentBase: './docs',
