@@ -1,0 +1,167 @@
+$pantone: #BA0C2F;
+$brand-hue: hue($pantone);
+
+// selection 
+$select_bg: hsl($brand-hue, 90%, 58%);
+
+$text-color: hsl($brand-hue, 88%, 94%);
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+/* legibility */
+body, button, input, textarea {
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: -0.002em;
+    word-spacing: 0.01em;
+}
+
+p {
+    line-height: 1.4;
+    letter-spacing: -0.006em;
+    word-spacing: 0.02em;
+    font-family: 'Quicksand', sans-serif;
+}
+
+br {
+    display:block;
+    margin-top: 0.5em;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    /* pantone 200 */
+    background: #BA0C2F;
+    color: $text-color;
+}
+
+a {
+    color: $text-color;
+    text-decoration: none;
+    border-bottom: 0.12em solid $select_bg;
+    padding-bottom: 0.09em;
+}
+
+#app {
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#headline-container {
+    width: 98vw;
+    max-width: 1080px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    flex: 1 1 90vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    &:after {
+    	content: "";
+    	position: fixed;
+    	pointer-events: none;
+    	top:0;
+    	left:0;
+    	width:100%;
+    	height:100%;
+    	background-image: linear-gradient(180deg, 
+    		$pantone 0%,
+    		transparent 15%, 
+    		transparent 70%, 
+    		$pantone 90%
+    	);
+    }
+}
+
+::-moz-selection {
+    color: white;
+    background: $select_bg;
+}
+
+::selection {
+    color: white; 
+    background: $select_bg;
+}
+
+#headline {
+	font-size: 1.8rem;
+	font-weight: 500;
+    padding: 20vh 0.5em 40vh;
+    margin: 0;
+    max-width: 600px;
+}
+
+#buttons {
+	align-self: stretch;
+    display: flex;
+    flex-flow: row nowrap;
+    flex: 1 0 50px;
+
+    $button-bg: hsl($brand-hue, 56%, 20%);
+
+    button {
+        flex: 1 1 50%;
+	    font-size: 22px;
+	    font-weight: bold;
+	    padding: 0;
+	    margin: 0;
+	    outline: none;
+	    border: none;
+	    position: relative;
+	    display: flex;
+	    flex-flow: row nowrap;
+	    justify-content: center;
+	    align-items: center;
+	    cursor: pointer;
+	    background-color: $button-bg;
+	    outline: 1px solid darken($button-bg, 8%);
+
+	    &:hover {
+		    background-color: lighten($button-bg, 2%);
+	    }
+
+	    &:active {
+		    background-color: darken($button-bg, 2%);
+	    }
+
+	    &:before {
+	    	content: "";
+	    	border: 8px solid transparent;
+	    }
+    }
+
+    $button-color: lighten($select_bg, 24%);
+
+    #prev:before {
+    	border-right-color: $button-color;
+    }
+    #next:before {
+    	border-left-color: $button-color;
+    }
+}
+
+@media (min-height: 40em) {
+	#headline-container {
+		justify-content: center;
+	}
+	#headline {
+	    padding: 20vh 0.5em;
+	}
+	p {
+		line-height: 1.618;
+	}
+}
