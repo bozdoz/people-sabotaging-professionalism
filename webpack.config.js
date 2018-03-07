@@ -24,10 +24,7 @@ module.exports = {
             title: 'People Sabotaging Professionalism',
             description: 'A series of unfortunate events which took place on Earth, a few years ago...',
             site: 'https://bozdoz.github.io/people-sabotaging-professionalism',
-            template: './src/index.html',
-            links: [
-                'https://fonts.googleapis.com/css?family=Quicksand:500'
-            ]
+            template: './src/index.html'
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.UglifyJsPlugin()
