@@ -5,12 +5,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ENV = process.env.NODE_ENV || 'dev';
 const is_prod = ENV === 'production';
 
+const sourceMap = is_prod ? '' : '?sourceMap';
+
 module.exports = {
     entry: './src/index.js',
     output: {
         filename: 'js/main.js',
         path: path.resolve(__dirname, 'docs'),
-        publicPath: '/'
+        publicPath: './'
     },
     devServer: is_prod ? {} : {
     	contentBase: './docs',
@@ -41,9 +43,9 @@ module.exports = {
             test: /\.s?css$/,
             use: [
                 'style-loader',
-                'css-loader?sourceMap',
-                'sass-loader?sourceMap',
-                'postcss-loader?sourceMap'
+                'css-loader' + sourceMap,
+                'sass-loader' + sourceMap,
+                'postcss-loader' + sourceMap
             ]
         },
         {
