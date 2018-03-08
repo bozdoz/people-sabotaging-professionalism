@@ -1,11 +1,18 @@
 import data from './data.json';
 import './index.scss';
 
+// DOM elements
 const headline = document.getElementById('headline');
 const container = document.getElementById('headline-container');
 const nextbtn = document.getElementById('next');
 const prevbtn = document.getElementById('prev');
 
+/**
+* it shuffles an array
+*
+* @param Array a
+* @return Array
+*/
 const shuffle = (a) => {
     var j, x, i;
     for (i = a.length; i; i--) {
@@ -28,12 +35,34 @@ const outkeys = shuffle( Object.keys(dataobj) );
 const outlen = outkeys.length;
 let i = 0;
 
+/**
+* it updates location hash
+*
+* @param String hash
+* @return Null
+*/
+const updateHash = (() => {
+    let fun;
+
+    try {
+        fun = window.history.replaceState.bind(window.history, {}, document.title);
+    } catch (e) {
+        fun = window.location.replace.bind(window.location);
+    }
+
+    return (hash) => fun(hash);
+})();
+
+/**
+* it updates page content
+*
+*/
 const update = () => {
     let original_index = outkeys[i];
     let newcontent = dataobj[ original_index ];
 
     // update location
-    window.location.hash = original_index;
+    updateHash( `#${original_index}` );
 
     // add links
     newcontent = newcontent.replace(/(https?:\/\/\S+)/g, (a) => (
@@ -49,16 +78,25 @@ const update = () => {
     container.scrollTop = 0;
 };
 
+/**
+* it gets the next iteration of site content
+*
+*/
 const next = () => {
     i = (i + 1) % outlen;
     update();
 };
 
+/**
+* it gets the previous iteration of site content
+*
+*/
 const prev = () => {
     i = (outlen + i - 1) % outlen;
     update();
 };
 
+// content index is saved to location hash
 if (window.location.hash) {
     let first_index = window.location.hash.substr(1);
     if (outlen > first_index && first_index >= 0) {
@@ -69,8 +107,10 @@ if (window.location.hash) {
     }
 }
 
+// update the site content
 update();
 
+// listeners for click and keydown
 nextbtn.addEventListener('click', next);
 prevbtn.addEventListener('click', prev);
 
