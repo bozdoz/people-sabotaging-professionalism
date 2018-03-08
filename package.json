@@ -1,15 +1,21 @@
 {
-  "name": "trident-news",
+  "name": "people-sabotaging-professionalism",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "export NODE_ENV=production && webpack"
+  },
+  "devDependencies": {
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
     "babel-jest": "20.0.3",
     "babel-loader": "7.1.2",
     "babel-preset-env": "^1.6.0",
+    "clean-webpack-plugin": "^0.1.19",
     "css-loader": "0.28.7",
-    "extract-text-webpack-plugin": "3.0.2",
+    "html-webpack-plugin": "^2.30.1",
+    "jest": "^20.0.4",
     "json-loader": "^0.5.7",
     "node-sass": "^4.7.2",
     "postcss-loader": "2.0.8",
@@ -19,17 +25,9 @@
     "webpack-dev-server": "2.9.4",
     "webpack-hot-middleware": "^2.19.1"
   },
-  "scripts": {
-    "start": "webpack-dev-server",
-    "build": "export NODE_ENV=production && webpack"
-  },
   "babel": {
     "presets": [
       "env"
     ]
-  },
-  "devDependencies": {
-    "html-webpack-plugin": "^2.30.1",
-    "jest": "^20.0.4"
   }
 }

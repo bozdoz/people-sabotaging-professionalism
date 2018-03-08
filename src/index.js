@@ -17,12 +17,23 @@ const shuffle = (a) => {
     return a;
 };
 
-const outdata = shuffle(data.slice());
-const outlen = outdata.length;
+// save indices
+let dataobj = {};
+data.forEach((a, i) => {
+    dataobj[i] = a;
+});
+
+// shuffle indices
+const outkeys = shuffle( Object.keys(dataobj) );
+const outlen = outkeys.length;
 let i = 0;
 
 const update = () => {
-    let newcontent = outdata[i];
+    let original_index = outkeys[i];
+    let newcontent = dataobj[ original_index ];
+
+    // update location
+    window.location.hash = original_index;
 
     // add links
     newcontent = newcontent.replace(/(https?:\/\/\S+)/g, (a) => (
@@ -47,6 +58,16 @@ const prev = () => {
     i = (outlen + i - 1) % outlen;
     update();
 };
+
+if (window.location.hash) {
+    let first_index = window.location.hash.substr(1);
+    if (outlen > first_index && first_index >= 0) {
+        outkeys.splice(outkeys.indexOf(first_index), 1);
+        outkeys.unshift(first_index);
+    } else {
+        console.log(`out of luck, ${outlen - 1} is the max`);
+    }
+}
 
 update();
 

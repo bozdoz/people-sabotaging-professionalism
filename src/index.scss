@@ -32,6 +32,7 @@ p {
 
 br {
     display:block;
+    content: "";
     margin-top: 0.5em;
 }
 
@@ -49,6 +50,7 @@ a {
     text-decoration: none;
     border-bottom: 0.12em solid $select_bg;
     padding-bottom: 0.09em;
+    word-break: break-word;
 }
 
 #app {
@@ -87,6 +89,7 @@ a {
 	font-weight: 500;
     padding: 20vh 0.5em 40vh;
     margin: 0;
+    word-break: break-word;
 
     &, &:after {
         max-width: 600px;
@@ -157,7 +160,7 @@ a {
     }
 }
 
-@media (min-height: 40em) {
+@media (min-height: 50em) {
 	#headline-container {
 		justify-content: center;
 	}

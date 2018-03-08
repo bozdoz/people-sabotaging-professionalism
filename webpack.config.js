@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 const ENV = process.env.NODE_ENV || 'dev';
 const is_prod = ENV === 'production';
@@ -20,6 +21,10 @@ module.exports = {
     },
     devtool: is_prod ? false : 'cheap-module-eval-source-map',
     plugins: [
+        new CleanWebpackPlugin([
+            './docs/js/main.js',
+            './docs/index.html'
+        ]),
         new HtmlWebpackPlugin({
             title: 'People Sabotaging Professionalism',
             description: 'A series of unfortunate events which took place on Earth, a few years ago...',
@@ -27,7 +32,7 @@ module.exports = {
             template: './src/index.html'
         }),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.optimize.UglifyJsPlugin()
+        is_prod ? new webpack.optimize.UglifyJsPlugin() : function () {}
     ],
     module: {
         rules: [
