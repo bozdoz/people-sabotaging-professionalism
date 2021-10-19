@@ -1,5 +1,4 @@
-import data from './data.json';
-import './index.scss';
+import data from './data';
 
 // DOM elements
 const headline = document.getElementById('headline');
@@ -10,8 +9,9 @@ const prevbtn = document.getElementById('prev');
 /**
 * it shuffles an array
 *
-* @param Array a
-* @return Array
+* @template {any[]} T
+* @param {T} a
+* @return T
 */
 const shuffle = (a) => {
     var j, x, i;
@@ -38,8 +38,7 @@ let i = 0;
 /**
 * it updates location hash
 *
-* @param String hash
-* @return Null
+* @return (hash: string) => string
 */
 const updateHash = (() => {
     let fun;
@@ -80,7 +79,6 @@ const update = () => {
 
 /**
 * it gets the next iteration of site content
-*
 */
 const next = () => {
     i = (i + 1) % outlen;
@@ -89,7 +87,6 @@ const next = () => {
 
 /**
 * it gets the previous iteration of site content
-*
 */
 const prev = () => {
     i = (outlen + i - 1) % outlen;

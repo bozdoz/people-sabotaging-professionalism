@@ -3,31 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "export NODE_ENV=production && webpack"
+    "start": "npm run watch",
+    "build": "npm-run-all -p build:*",
+    "build:css": "sass src/index.scss --style=compressed | postcss -u autoprefixer -o docs/style.css --no-map",
+    "build:js": "NODE_ENV=production rollup -c",
+    "watch": "npm-run-all -p watch:*",
+    "watch:css": "sass src/index.scss docs/style.css --watch",
+    "watch:js": "rollup -c -w",
+    "watch:proxy": "browser-sync start --config bs-config.js"
   },
-  "devDependencies": {
-    "autoprefixer": "7.1.6",
-    "babel-core": "6.26.0",
-    "babel-jest": "20.0.3",
-    "babel-loader": "7.1.2",
-    "babel-preset-env": "^1.6.0",
-    "clean-webpack-plugin": "^0.1.19",
-    "css-loader": "0.28.7",
-    "html-webpack-plugin": "^2.30.1",
-    "jest": "^20.0.4",
-    "json-loader": "^0.5.7",
-    "node-sass": "^4.7.2",
-    "postcss-loader": "2.0.8",
-    "sass-loader": "^6.0.6",
-    "style-loader": "0.19.0",
-    "webpack": "3.8.1",
-    "webpack-dev-server": "2.9.4",
-    "webpack-hot-middleware": "^2.19.1"
-  },
-  "babel": {
-    "presets": [
-      "env"
-    ]
+  "dependencies": {
+    "@rollup/plugin-commonjs": "^21.0.0",
+    "autoprefixer": "^10.3.7",
+    "browser-sync": "^2.27.5",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^9.0.1",
+    "rollup": "^2.58.0",
+    "sass": "^1.43.2"
   }
 }

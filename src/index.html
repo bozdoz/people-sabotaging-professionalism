@@ -6,31 +6,32 @@
     <meta name="theme-color" content="#BA0C2F">
     <link rel="manifest" href="./manifest.json">
     <link rel="shortcut icon" href="./favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <title>{{title}}</title>
     <meta
       name="description"
-      content="<%= htmlWebpackPlugin.options.description %>" />
+      content="{{description}}" />
     <meta
       name="keywords"
       content="overheard at work, funny" />
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@bozdoz" />
-    <meta name="twitter:title" content="<%= htmlWebpackPlugin.options.title %>" />
-    <meta name="twitter:description" content="<%= htmlWebpackPlugin.options.description %>" />
+    <meta name="twitter:title" content="{{title}}" />
+    <meta name="twitter:description" content="{{description}}" />
     <meta name="twitter:creator" content="@bozdoz" />
-    <meta name="twitter:image" content="<%= htmlWebpackPlugin.options.site %>/images/apple-touch-icon-precomposed.png" />
+    <meta name="twitter:image" content="{{site}}/images/apple-touch-icon-precomposed.png" />
 
-    <meta property="og:title" content="<%= htmlWebpackPlugin.options.title %>" />
+    <meta property="og:title" content="{{title}}" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="<%= htmlWebpackPlugin.options.site %>" />
-    <meta property="og:description" content="<%= htmlWebpackPlugin.options.description %>" />
-    <meta property="og:site_name" content="<%= htmlWebpackPlugin.options.title %>" />
+    <meta property="og:url" content="{{site}}" />
+    <meta property="og:description" content="{{description}}" />
+    <meta property="og:site_name" content="{{title}}" />
     <meta property="og:locale" content="en_CA" />
 
-    <link rel="apple-touch-icon" sizes="114x114" href="<%= htmlWebpackPlugin.options.site %>/images/apple-touch-icon-precomposed.png" /> 
+    <link rel="apple-touch-icon" sizes="114x114" href="{{site}}/images/apple-touch-icon-precomposed.png" /> 
     
     <link href="https://fonts.googleapis.com/css?family=Quicksand:500" rel="stylesheet" />
+    <link href="./style.css" rel="stylesheet" />
   </head>
   <body>
     <noscript>
@@ -53,5 +54,6 @@
         </button>
       </div>
     </div>
+    <script type="text/javascript" src="./js/main.js"></script>
   </body>
 </html>
